@@ -1,0 +1,88 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.bord {
+    width: 985px;
+    height: 340px;
+    border: 1px solid black;
+    display: flex;
+}
+
+.blok {
+    background-color: rgb(20, 20, 107);
+    width: 25px;
+    height: 25px;
+    display: inline-block;
+}
+
+.left{
+    background-color: rgb(20, 20, 107);
+    width: 140px;
+    height: 340px;
+    display: flex;
+    justify-content: center;
+}
+
+.spoor {
+    background-color: white;
+    width: 106px;
+    height: 106px;
+    margin-top: 30px;
+}
+
+.midden {
+    height: 340px;
+    width: 600px;
+    background-color: rgb(13, 13, 70);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.info{
+    height: 295px;
+    width: 500px;
+    background-color: white;
+    color: rgb(24, 24, 143);
+    padding: 8px;
+}
+
+.info-top {
+    display: flex;
+}
+
+.info-top-time{
+    width: 250px;
+    height: 50px;
+}
+
+.intercity {
+    display: flex;
+    width: 250px;
+    height: 50px;
+}
+
+.plaatsen {
+    width: 500px;
+    height: 175px;
+}
+
+.plaatsen-info-1{
+    width: 500px;
+    height: 35px;
+}
+
+.plaatsen-info-2{
+    width: 500px;
+    height: 35px;
+}
+
+
+
+

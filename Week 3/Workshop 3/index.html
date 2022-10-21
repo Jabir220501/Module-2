@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webshops</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <h1><a href="#">Webshop</a></h1>
+        <nav>
+            <ul class="nav-ul">
+                <li class="nav-li"><a href="#">Woman</a></li>
+                <li class="nav-li"><a href="#">Men</a></li>
+                <li class="nav-li"><a href="#">Kids</a></li>
+            </ul>
+        </nav>
+        <div class="search-bar">
+            <img src="design/icons/search-interface-symbol.png" alt="Search Icon">
+            <input type="searchbar" placeholder="Search..." class="searchbar">
+        </div>
+        <div class="header-right">
+            <div class="profile-btn">
+                <img src="design/icons/user.png" alt="Profile Icon">
+                <a href="#">Account</a>
+            </div>
+            <div class="cart-btn">
+                <img src="design/icons/shopping-cart-empty-side-view.png" alt="Cart Icon">
+                <a href="#">Cart (1) </a>
+            </div>
+        </div>
+    </header>
+
+    <div class="products">
+        <div class="product-title">
+            <h2 class="new-bg">NEW</h2>
+            <h2 class="first-part-title" style="font-size: 30px; position: absolute; top: 75px; left: 3%;">Men's <span class="second-part-title">Clothing</span></h2>
+        </div>
+        <div class="main-content">
+            <div class="left">
+                <div class="side-nav">
+                    <ul class="list">
+                        <li class="list-item">
+                            <a href="#">Jeans</a>
+                            <img src="design/icons/right-arrow.png" alt="">
+                        </li>
+                        <li class="list-item">
+                            <a href="#">Shirt</a>
+                            <img src="design/icons/right-arrow.png" alt="">
+                        </li>
+                        <li class="list-item">
+                            <a href="#">Vesten & Truien</a>
+                            <img src="design/icons/right-arrow.png" alt="">
+                        </li>
+                        <div class="list-item-container">
+                            <li class="list-item" style="padding-bottom: 9px;">
+                                <a href="#">Hoodie & Sweathers</a>
+                                <img src="design/icons/right-arrow.png" alt="">
+                            </li>
+                            <ul class="dropdown-list">
+                                <li><a href="#">Hoodies</a></li>
+                                <li><a href="#">Sweathers</a></li>
+                                <li><a href="#">Fleece Hoodie</a></li>
+                            </ul>
+                        </div>
+                    </ul>
+                </div>
+                <div class="price-slider">
+                    <div class="price-slider-title">
+                      <h2>Price Range</h2>
+                    </div>
+                    <div class="price-input">
+                      <div class="field">
+                        <span>Min</span>
+                        <input type="number" class="input-min" value="15">
+                      </div>
+                      <div class="separator">-</div>
+                      <div class="field">
+                        <span>Max</span>
+                        <input type="number" class="input-max" value="350">
+                      </div>
+                    </div>
+                    <div class="slider">
+                      <div class="progress"></div>
+                    </div>
+                    <div class="range-input">
+                      <input type="range" class="range-min" min="0" max="10000" value="2500" step="10">
+                      <input type="range" class="range-max" min="0" max="10000" value="7500" step="10">
+                    </div>
+                </div>
+            </div>
+            
+            <script>
+                const rangeInput = document.querySelectorAll(".range-input input"),
+priceInput = document.querySelectorAll(".price-input input"),
+range = document.querySelector(".slider .progress");
+let priceGap = 1000;
+priceInput.forEach(input =>{
+    input.addEventListener("input", e =>{
+        let minPrice = parseInt(priceInput[0].value),
+        maxPrice = parseInt(priceInput[1].value);
+        
+        if((maxPrice - minPrice >= priceGap) && maxPrice <= rangeInput[1].max){
+            if(e.target.className === "input-min"){
+                rangeInput[0].value = minPrice;
+                range.style.left = ((minPrice / rangeInput[0].max) * 100) + "%";
+            }else{
+                rangeInput[1].value = maxPrice;
+                range.style.right = 100 - (maxPrice / rangeInput[1].max) * 100 + "%";
+            }
+        }
+    });
+});
+rangeInput.forEach(input =>{
+    input.addEventListener("input", e =>{
+        let minVal = parseInt(rangeInput[0].value),
+        maxVal = parseInt(rangeInput[1].value);
+        if((maxVal - minVal) < priceGap){
+            if(e.target.className === "range-min"){
+                rangeInput[0].value = maxVal - priceGap
+            }else{
+                rangeInput[1].value = minVal + priceGap;
+            }
+        }else{
+            priceInput[0].value = minVal;
+            priceInput[1].value = maxVal;
+            range.style.left = ((minVal / rangeInput[0].max) * 100) + "%";
+            range.style.right = 100 - (maxVal / rangeInput[1].max) * 100 + "%";
+        }
+    });
+});
+            </script>
+
+        <div class="list-product">
+            <div class="product" id="product-1">
+                <img src="design/products/download.jfif" alt="product-1" class="img-product-hover">
+                <div class="product-info">
+                    <h4>Add Size</h4>
+                    <ul class="product-size-ul">
+                        <li class="product-size-li"><a href="#">XS</a></li>
+                        <li class="product-size-li"><a href="#">S</a></li>
+                        <li class="product-size-li"><a href="#">M</a></li>
+                        <li class="product-size-li"><a href="#">L</a></li>
+                        <li class="product-size-li"><a href="#">XL</a></li>
+                        <li class="product-size-li"><a href="#">XXL</a></li>
+                    </ul>
+                </div>
+                <div class="product-name">
+                    <div class="product-name-container">
+                        <div class="product-name-left">
+                            <h4 style="font-weight: 600;">Rabbed Cardigan</h4>
+                            <h4 style="color:#c7c7c7;">Noe Arrival</h4>
+                            <h4>$39,99</h4>
+                        </div>
+                        <div class="product-name-right"><img src="design/icons/heart.png" alt=""></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product" id="product-2">
+                <img src="design/products/download (1).jfif" alt="product" class="img-product-hover">
+                <div class="product-info">
+                    <h4>Add Size</h4>
+                    <ul class="product-size-ul">
+                        <li class="product-size-li"><a href="#">XS</a></li>
+                        <li class="product-size-li"><a href="#">S</a></li>
+                        <li class="product-size-li"><a href="#">M</a></li>
+                        <li class="product-size-li"><a href="#">L</a></li>
+                        <li class="product-size-li"><a href="#">XL</a></li>
+                        <li class="product-size-li"><a href="#">XXL</a></li>
+                    </ul>
+                </div>
+                <div class="product-name">
+                    <div class="product-name-container">
+                        <div class="product-name-left">
+                            <h4 style="font-weight: 600;">Rabbed Cardigan</h4>
+                            <h4 style="color:#c7c7c7;">Noe Arrival</h4>
+                            <h4>$39,99</h4>
+                        </div>
+                        <div class="product-name-right"><img src="design/icons/heart.png" alt=""></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product" id="product-3">
+                <img src="design/products/download (2).jfif" alt="product" class="img-product-hover">
+                <div class="product-info">
+                    <h4>Add Size</h4>
+                    <ul class="product-size-ul">
+                        <li class="product-size-li"><a href="#">XS</a></li>
+                        <li class="product-size-li"><a href="#">S</a></li>
+                        <li class="product-size-li"><a href="#">M</a></li>
+                        <li class="product-size-li"><a href="#">L</a></li>
+                        <li class="product-size-li"><a href="#">XL</a></li>
+                        <li class="product-size-li"><a href="#">XXL</a></li>
+                    </ul>
+                </div>
+                <div class="product-name">
+                    <div class="product-name-container">
+                        <div class="product-name-left">
+                            <h4 style="font-weight: 600;">Rabbed Cardigan</h4>
+                            <h4 style="color:#c7c7c7;">Noe Arrival</h4>
+                            <h4>$39,99</h4>
+                        </div>
+                        <div class="product-name-right"><img src="design/icons/heart.png" alt=""></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product" id="product-4">
+                <img src="design/products/download (3).jfif" alt="product" class="img-product-hover">
+                <div class="product-info">
+                    <h4>Add Size</h4>
+                    <ul class="product-size-ul">
+                        <li class="product-size-li"><a href="#">XS</a></li>
+                        <li class="product-size-li"><a href="#">S</a></li>
+                        <li class="product-size-li"><a href="#">M</a></li>
+                        <li class="product-size-li"><a href="#">L</a></li>
+                        <li class="product-size-li"><a href="#">XL</a></li>
+                        <li class="product-size-li"><a href="#">XXL</a></li>
+                    </ul>
+                </div>
+                <div class="product-name">
+                    <div class="product-name-container">
+                        <div class="product-name-left">
+                            <h4 style="font-weight: 600;">Rabbed Cardigan</h4>
+                            <h4 style="color:#c7c7c7;">Noe Arrival</h4>
+                            <h4>$39,99</h4>
+                        </div>
+                        <div class="product-name-right"><img src="design/icons/heart.png" alt=""></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product" id="product-5">
+                <img src="design/products/download (4).jfif" alt="product" class="img-product-hover">
+                <div class="product-info">
+                    <h4>Add Size</h4>
+                    <ul class="product-size-ul">
+                        <li class="product-size-li"><a href="#">XS</a></li>
+                        <li class="product-size-li"><a href="#">S</a></li>
+                        <li class="product-size-li"><a href="#">M</a></li>
+                        <li class="product-size-li"><a href="#">L</a></li>
+                        <li class="product-size-li"><a href="#">XL</a></li>
+                        <li class="product-size-li"><a href="#">XXL</a></li>
+                    </ul>
+                </div>
+                <div class="product-name">
+                    <div class="product-name-container">
+                        <div class="product-name-left">
+                            <h4 style="font-weight: 600;">Rabbed Cardigan</h4>
+                            <h4 style="color:#c7c7c7;">Noe Arrival</h4>
+                            <h4>$39,99</h4>
+                        </div>
+                        <div class="product-name-right"><img src="design/icons/heart.png" alt=""></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product" id="product-6">
+                <img src="design/products/download (5).jfif" alt="product" class="img-product-1-hover">
+                <div class="product-info">
+                    <h4>Add Size</h4>
+                    <ul class="product-size-ul">
+                        <li class="product-size-li"><a href="#">XS</a></li>
+                        <li class="product-size-li"><a href="#">S</a></li>
+                        <li class="product-size-li"><a href="#">M</a></li>
+                        <li class="product-size-li"><a href="#">L</a></li>
+                        <li class="product-size-li"><a href="#">XL</a></li>
+                        <li class="product-size-li"><a href="#">XXL</a></li>
+                    </ul>
+                </div>
+                <div class="product-name">
+                    <div class="product-name-container">
+                        <div class="product-name-left">
+                            <h4 style="font-weight: 600;">Rabbed Cardigan</h4>
+                            <h4 style="color:#c7c7c7;">Noe Arrival</h4>
+                            <h4>$39,99</h4>
+                        </div>
+                        <div class="product-name-right"><img src="design/icons/heart.png" alt=""></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product" id="product-7">
+                <img src="design/products/download (6).jfif" alt="product" class="img-product-1-hover">
+                <div class="product-info">
+                    <h4>Add Size</h4>
+                    <ul class="product-size-ul">
+                        <li class="product-size-li"><a href="#">XS</a></li>
+                        <li class="product-size-li"><a href="#">S</a></li>
+                        <li class="product-size-li"><a href="#">M</a></li>
+                        <li class="product-size-li"><a href="#">L</a></li>
+                        <li class="product-size-li"><a href="#">XL</a></li>
+                        <li class="product-size-li"><a href="#">XXL</a></li>
+                    </ul>
+                </div>
+                <div class="product-name">
+                    <div class="product-name-container">
+                        <div class="product-name-left">
+                            <h4 style="font-weight: 600;">Rabbed Cardigan</h4>
+                            <h4 style="color:#c7c7c7;">Noe Arrival</h4>
+                            <h4>$39,99</h4>
+                        </div>
+                        <div class="product-name-right"><img src="design/icons/heart.png" alt=""></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product" id="product-8">
+                <img src="design/products/download (7).jfif" alt="product-1" class="img-product-1-hover">
+                <div class="product-info">
+                    <h4>Add Size</h4>
+                    <ul class="product-size-ul">
+                        <li class="product-size-li"><a href="#">XS</a></li>
+                        <li class="product-size-li"><a href="#">S</a></li>
+                        <li class="product-size-li"><a href="#">M</a></li>
+                        <li class="product-size-li"><a href="#">L</a></li>
+                        <li class="product-size-li"><a href="#">XL</a></li>
+                        <li class="product-size-li"><a href="#">XXL</a></li>
+                    </ul>
+                </div>
+                <div class="product-name">
+                    <div class="product-name-container">
+                        <div class="product-name-left">
+                            <h4 style="font-weight: 600;">Rabbed Cardigan</h4>
+                            <h4 style="color:#c7c7c7;">Noe Arrival</h4>
+                            <h4>$39,99</h4>
+                        </div>
+                        <div class="product-name-right"><img src="design/icons/heart.png" alt=""></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product" id="product-9">
+                <img src="design/products/download (8).jfif" alt="product" class="img-product-1-hover">
+                <div class="product-info">
+                    <h4>Add Size</h4>
+                    <ul class="product-size-ul">
+                        <li class="product-size-li"><a href="#">XS</a></li>
+                        <li class="product-size-li"><a href="#">S</a></li>
+                        <li class="product-size-li"><a href="#">M</a></li>
+                        <li class="product-size-li"><a href="#">L</a></li>
+                        <li class="product-size-li"><a href="#">XL</a></li>
+                        <li class="product-size-li"><a href="#">XXL</a></li>
+                    </ul>
+                </div>
+                <div class="product-name">
+                    <div class="product-name-container">
+                        <div class="product-name-left">
+                            <h4 style="font-weight: 600;">Rabbed Cardigan</h4>
+                            <h4 style="color:#c7c7c7;">Noe Arrival</h4>
+                            <h4>$39,99</h4>
+                        </div>
+                        <div class="product-name-right"><img src="design/icons/heart.png" alt=""></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product" id="product-10">
+                <img src="design/products/download (9).jfif" alt="product" class="img-product-1-hover">
+                <div class="product-info">
+                    <h4>Add Size</h4>
+                    <ul class="product-size-ul">
+                        <li class="product-size-li"><a href="#">XS</a></li>
+                        <li class="product-size-li"><a href="#">S</a></li>
+                        <li class="product-size-li"><a href="#">M</a></li>
+                        <li class="product-size-li"><a href="#">L</a></li>
+                        <li class="product-size-li"><a href="#">XL</a></li>
+                        <li class="product-size-li"><a href="#">XXL</a></li>
+                    </ul>
+                </div>
+                <div class="product-name">
+                    <div class="product-name-container">
+                        <div class="product-name-left">
+                            <h4 style="font-weight: 600;">Rabbed Cardigan</h4>
+                            <h4 style="color:#c7c7c7;">Noe Arrival</h4>
+                            <h4>$39,99</h4>
+                        </div>
+                        <div class="product-name-right"><img src="design/icons/heart.png" alt=""></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product" id="product-11">
+                <img src="design/products/download (10).jfif" alt="product" class="img-product-1-hover">
+                <div class="product-info">
+                    <h4>Add Size</h4>
+                    <ul class="product-size-ul">
+                        <li class="product-size-li"><a href="#">XS</a></li>
+                        <li class="product-size-li"><a href="#">S</a></li>
+                        <li class="product-size-li"><a href="#">M</a></li>
+                        <li class="product-size-li"><a href="#">L</a></li>
+                        <li class="product-size-li"><a href="#">XL</a></li>
+                        <li class="product-size-li"><a href="#">XXL</a></li>
+                    </ul>
+                </div>
+                <div class="product-name">
+                    <div class="product-name-container">
+                        <div class="product-name-left">
+                            <h4 style="font-weight: 600;">Rabbed Cardigan</h4>
+                            <h4 style="color:#c7c7c7;">Noe Arrival</h4>
+                            <h4>$39,99</h4>
+                        </div>
+                        <div class="product-name-right"><img src="design/icons/heart.png" alt=""></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product" id="product-12">
+                <img src="design/products/download (11).jfif" alt="product-1" class="img-product-1-hover">
+                <div class="product-info">
+                    <h4>Add Size</h4>
+                    <ul class="product-size-ul">
+                        <li class="product-size-li"><a href="#">XS</a></li>
+                        <li class="product-size-li"><a href="#">S</a></li>
+                        <li class="product-size-li"><a href="#">M</a></li>
+                        <li class="product-size-li"><a href="#">L</a></li>
+                        <li class="product-size-li"><a href="#">XL</a></li>
+                        <li class="product-size-li"><a href="#">XXL</a></li>
+                    </ul>
+                </div>
+                <div class="product-name">
+                    <div class="product-name-container">
+                        <div class="product-name-left">
+                            <h4 style="font-weight: 600;">Rabbed Cardigan</h4>
+                            <h4 style="color:#c7c7c7;">Noe Arrival</h4>
+                            <h4>$39,99</h4>
+                        </div>
+                        <div class="product-name-right"><img src="design/icons/heart.png" alt=""></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product" id="product-13">
+                <img src="design/products/download (12).jfif" alt="product-1" class="img-product-1-hover">
+                <div class="product-info">
+                    <h4>Add Size</h4>
+                    <ul class="product-size-ul">
+                        <li class="product-size-li"><a href="#">XS</a></li>
+                        <li class="product-size-li"><a href="#">S</a></li>
+                        <li class="product-size-li"><a href="#">M</a></li>
+                        <li class="product-size-li"><a href="#">L</a></li>
+                        <li class="product-size-li"><a href="#">XL</a></li>
+                        <li class="product-size-li"><a href="#">XXL</a></li>
+                    </ul>
+                </div>
+                <div class="product-name">
+                    <div class="product-name-container">
+                        <div class="product-name-left">
+                            <h4 style="font-weight: 600;">Rabbed Cardigan</h4>
+                            <h4 style="color:#c7c7c7;">Noe Arrival</h4>
+                            <h4>$39,99</h4>
+                        </div>
+                        <div class="product-name-right"><img src="design/icons/heart.png" alt=""></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product" id="product-14">
+                <img src="design/products/download (13).jfif" alt="product-1" class="img-product-1-hover">
+                <div class="product-info">
+                    <h4>Add Size</h4>
+                    <ul class="product-size-ul">
+                        <li class="product-size-li"><a href="#">XS</a></li>
+                        <li class="product-size-li"><a href="#">S</a></li>
+                        <li class="product-size-li"><a href="#">M</a></li>
+                        <li class="product-size-li"><a href="#">L</a></li>
+                        <li class="product-size-li"><a href="#">XL</a></li>
+                        <li class="product-size-li"><a href="#">XXL</a></li>
+                    </ul>
+                </div>
+                <div class="product-name">
+                    <div class="product-name-container">
+                        <div class="product-name-left">
+                            <h4 style="font-weight: 600;">Rabbed Cardigan</h4>
+                            <h4 style="color:#c7c7c7;">Noe Arrival</h4>
+                            <h4>$39,99</h4>
+                        </div>
+                        <div class="product-name-right"><img src="design/icons/heart.png" alt=""></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product" id="product-15">
+                <img src="design/products/download (14).jfif" alt="product-1" class="img-product-1-hover">
+                <div class="product-info">
+                    <h4>Add Size</h4>
+                    <ul class="product-size-ul">
+                        <li class="product-size-li"><a href="#">XS</a></li>
+                        <li class="product-size-li"><a href="#">S</a></li>
+                        <li class="product-size-li"><a href="#">M</a></li>
+                        <li class="product-size-li"><a href="#">L</a></li>
+                        <li class="product-size-li"><a href="#">XL</a></li>
+                        <li class="product-size-li"><a href="#">XXL</a></li>
+                    </ul>
+                </div>
+                <div class="product-name">
+                    <div class="product-name-container">
+                        <div class="product-name-left">
+                            <h4 style="font-weight: 600;">Rabbed Cardigan</h4>
+                            <h4 style="color:#c7c7c7;">Noe Arrival</h4>
+                            <h4>$39,99</h4>
+                        </div>
+                        <div class="product-name-right"><img src="design/icons/heart.png" alt=""></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product"  id="product-16">
+                <img src="design/products/download (15).jfif" alt="product-1" class="img-product-1-hover">
+                <div class="product-info">
+                    <h4>Add Size</h4>
+                    <ul class="product-size-ul">
+                        <li class="product-size-li"><a href="#">XS</a></li>
+                        <li class="product-size-li"><a href="#">S</a></li>
+                        <li class="product-size-li"><a href="#">M</a></li>
+                        <li class="product-size-li"><a href="#">L</a></li>
+                        <li class="product-size-li"><a href="#">XL</a></li>
+                        <li class="product-size-li"><a href="#">XXL</a></li>
+                    </ul>
+                </div>
+                <div class="product-name">
+                    <div class="product-name-container">
+                        <div class="product-name-left">
+                            <h4 style="font-weight: 600;">Rabbed Cardigan</h4>
+                            <h4 style="color:#c7c7c7;">Noe Arrival</h4>
+                            <h4>$39,99</h4>
+                        </div>
+                        <div class="product-name-right"><img src="design/icons/heart.png" alt=""></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="product"  id="product-16">
+                <img src="design/products/download (15).jfif" alt="product-1" class="img-product-1-hover">
+                <div class="product-info">
+                    <h4>Add Size</h4>
+                    <ul class="product-size-ul">
+                        <li class="product-size-li"><a href="#">XS</a></li>
+                        <li class="product-size-li"><a href="#">S</a></li>
+                        <li class="product-size-li"><a href="#">M</a></li>
+                        <li class="product-size-li"><a href="#">L</a></li>
+                        <li class="product-size-li"><a href="#">XL</a></li>
+                        <li class="product-size-li"><a href="#">XXL</a></li>
+                    </ul>
+                </div>
+                <div class="product-name">
+                    <div class="product-name-container">
+                        <div class="product-name-left">
+                            <h4 style="font-weight: 600;">Rabbed Cardigan</h4>
+                            <h4 style="color:#c7c7c7;">Noe Arrival</h4>
+                            <h4>$39,99</h4>
+                        </div>
+                        <div class="product-name-right"><img src="design/icons/heart.png" alt=""></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product"  id="product-17">
+                <img src="design/products/download (16).jfif" alt="product-1" class="img-product-1-hover">
+                <div class="product-info">
+                    <h4>Add Size</h4>
+                    <ul class="product-size-ul">
+                        <li class="product-size-li"><a href="#">XS</a></li>
+                        <li class="product-size-li"><a href="#">S</a></li>
+                        <li class="product-size-li"><a href="#">M</a></li>
+                        <li class="product-size-li"><a href="#">L</a></li>
+                        <li class="product-size-li"><a href="#">XL</a></li>
+                        <li class="product-size-li"><a href="#">XXL</a></li>
+                    </ul>
+                </div>
+                <div class="product-name">
+                    <div class="product-name-container">
+                        <div class="product-name-left">
+                            <h4 style="font-weight: 600;">Rabbed Cardigan</h4>
+                            <h4 style="color:#c7c7c7;">Noe Arrival</h4>
+                            <h4>$39,99</h4>
+                        </div>
+                        <div class="product-name-right"><img src="design/icons/heart.png" alt=""></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product"  id="product-18">
+                <img src="design/products/download (17).jfif" alt="product" class="img-product-1-hover">
+                <div class="product-info">
+                    <h4>Add Size</h4>
+                    <ul class="product-size-ul">
+                        <li class="product-size-li"><a href="#">XS</a></li>
+                        <li class="product-size-li"><a href="#">S</a></li>
+                        <li class="product-size-li"><a href="#">M</a></li>
+                        <li class="product-size-li"><a href="#">L</a></li>
+                        <li class="product-size-li"><a href="#">XL</a></li>
+                        <li class="product-size-li"><a href="#">XXL</a></li>
+                    </ul>
+                </div>
+                <div class="product-name">
+                    <div class="product-name-container">
+                        <div class="product-name-left">
+                            <h4 style="font-weight: 600;">Rabbed Cardigan</h4>
+                            <h4 style="color:#c7c7c7;">Noe Arrival</h4>
+                            <h4>$39,99</h4>
+                        </div>
+                        <div class="product-name-right"><img src="design/icons/heart.png" alt=""></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product"  id="product-19">
+                <img src="design/products/download (19).jfif" alt="product" class="img-product-1-hover">
+                <div class="product-info">
+                    <h4>Add Size</h4>
+                    <ul class="product-size-ul">
+                        <li class="product-size-li"><a href="#">XS</a></li>
+                        <li class="product-size-li"><a href="#">S</a></li>
+                        <li class="product-size-li"><a href="#">M</a></li>
+                        <li class="product-size-li"><a href="#">L</a></li>
+                        <li class="product-size-li"><a href="#">XL</a></li>
+                        <li class="product-size-li"><a href="#">XXL</a></li>
+                    </ul>
+                </div>
+                <div class="product-name">
+                    <div class="product-name-container">
+                        <div class="product-name-left">
+                            <h4 style="font-weight: 600;">Rabbed Cardigan</h4>
+                            <h4 style="color:#c7c7c7;">Noe Arrival</h4>
+                            <h4>$39,99</h4>
+                        </div>
+                        <div class="product-name-right"><img src="design/icons/heart.png" alt=""></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+        </div>
+
+</body>
+</html>
